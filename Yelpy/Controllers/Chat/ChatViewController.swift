@@ -53,8 +53,26 @@ class ChatViewController: UIViewController {
     
     //  ––––– LAB 5 TODO: SEND MESSAGE TO SERVER AFTER onSend IS CLICKED
     @IBAction func onSend(_ sender: Any) {
-       
+        if messageTextField.text!.isEmpty == false {
+            let chatMessage = PFObject(className: "TrainingFall2020") // className = group chat, Obtained from Constants.swift
+            chatMessage["text"] = messageTextField.text ?? ""
+            chatMessage["user"] = PFUser.current()
+            self.messageTextField.text = "" // reset message
+            chatMessage.saveInBackground { (success, error) in
+                if success {
+                    print("The message was saved!")
+                            
+                } else if let error = error {
+                    print("Problem saving message: \(error.localizedDescription)")
+                }
+            }
+            
+        } else {
+            print("\nMessage cannot be empty\n")
+        }
     }
+       
+    
     
     
     
