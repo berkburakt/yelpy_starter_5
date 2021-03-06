@@ -11,7 +11,7 @@ import UIKit
 
 class Restaurant {
     
-    // ––––– Lab 2 TODO: Establish Properties –––––
+    // /––––– Lab 2 TODO: Establish Properties –––––
     var imageURL: URL?
     var url: URL?
     var name: String
